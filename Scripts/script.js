@@ -1,14 +1,22 @@
 const gameBoard = ((doc) => {
-    let rows = ['', '', '',
-                '', '', '',
-                '', '', ''];
+    let rows = ['-', '-', '-',
+                '-', '-', '-',
+                '-', '-', '-'];
 
-    const storeRows = (input, index) => {
+    const storeRows = (input, id) => {
         if(input === 'o' || input === 'x')
         {
-            console.log("initial: " + rows[index]);
-            rows[index] = input;
-            console.log("final: " + rows[index]);
+            index = id.slice(2, id.length); // get the id and convert to number
+            //console.log(index);
+            let i = parseInt(index);
+            //console.log(i)
+            //console.log("initial: " + rows[i]);
+            if(rows[i] != 'o' && rows[i] != 'x')
+            {
+            rows[i] = input;
+                console.log("final: " + rows[i]);
+            displayRows();
+            }
         }
         else
         {
@@ -38,21 +46,17 @@ const gameBoard = ((doc) => {
             }
         }
     }
-    return { storeRows, displayRows };
+    return { storeRows };
 })(document);
-gameBoard.storeRows('x', 6);
-gameBoard.storeRows('x', 5);
-gameBoard.storeRows('o', 2);
-gameBoard.storeRows('o', 4);
-gameBoard.storeRows('x', 1);
-gameBoard.storeRows('x', 3);
-gameBoard.storeRows('o', 7);
-gameBoard.storeRows('o', 8);
-gameBoard.storeRows('x', 0);
-gameBoard.displayRows();
-
+const tableD = document.querySelectorAll("td");
+//console.log(tabled);
+tableD.forEach((td) => {
+    td.addEventListener('click', () => {
+        gameBoard.storeRows('x', td.id);
+    })
+})
 const player = (() => {
-
+    let name = "";
     return;
 })();
 
