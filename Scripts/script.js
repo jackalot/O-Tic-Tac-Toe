@@ -41,6 +41,14 @@ const gameBoard = ((doc) => {
     return { storeRows, displayRows };
 })(document);
 gameBoard.storeRows('x', 6);
+gameBoard.storeRows('x', 5);
+gameBoard.storeRows('o', 2);
+gameBoard.storeRows('o', 4);
+gameBoard.storeRows('x', 1);
+gameBoard.storeRows('x', 3);
+gameBoard.storeRows('o', 7);
+gameBoard.storeRows('o', 8);
+gameBoard.storeRows('x', 0);
 gameBoard.displayRows();
 
 const player = (() => {
