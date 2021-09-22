@@ -1,4 +1,4 @@
-const gameBoard = (() => {
+const gameBoard = ((doc) => {
     let rows = ['', '', '',
                 '', '', '',
                 '', '', ''];
@@ -15,10 +15,20 @@ const gameBoard = (() => {
             return console.error('cant store something thats not x or o');
         }
     } 
-    return { storeRows };
-})();
+    const displayRows = () => {
+        let td = doc.querySelectorAll("td");
+        let body = document.querySelector("body");
+        td.forEach(element => {
+            element.textContent = rows[element];
+           
+        });
+        body.append(td);
+    }
+    return { storeRows, displayRows };
+})(document);
+gameBoard.storeRows('x', 4);
+gameBoard.displayRows();
 
-console.log(gameBoard.storeRows('x', 1))
 const player = (() => {
 
     return;
