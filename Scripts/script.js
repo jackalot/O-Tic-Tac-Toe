@@ -16,17 +16,32 @@ const gameBoard = ((doc) => {
         }
     } 
     const displayRows = () => {
-        let td = doc.querySelectorAll("td");
         let body = document.querySelector("body");
-        td.forEach(element => {
-            element.textContent = rows[element];
-           
-        });
-        body.append(td);
+        for(i = 0; i < rows.length; i++)
+        {
+            let id = "#" + i; //just for read-ability
+            let td = doc.querySelector(id);
+            td.textContent = rows[i];
+            switch(i)
+            {
+                case i < 3:
+                    let tr = doc.querySelector("#row1");
+                    tr.append(td);
+                    break;
+                case i < 6:
+                     tr = doc.querySelector("#row2");
+                    tr.append(td);
+                    break;
+                case i < 9:
+                     tr = doc.querySelector("#row3");
+                    tr.append(td);
+                    break;
+            }
+        }
     }
     return { storeRows, displayRows };
 })(document);
-gameBoard.storeRows('x', 4);
+gameBoard.storeRows('x', 6);
 gameBoard.displayRows();
 
 const player = (() => {
