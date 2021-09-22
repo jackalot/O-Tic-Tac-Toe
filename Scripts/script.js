@@ -19,8 +19,7 @@ const gameBoard = ((doc) => {
         let body = document.querySelector("body");
         for(i = 0; i < rows.length; i++)
         {
-            let id = "#" + i; //just for read-ability
-            let td = doc.querySelector(id);
+            let td = doc.querySelector("#r-" + i);
             td.textContent = rows[i];
             switch(i)
             {
