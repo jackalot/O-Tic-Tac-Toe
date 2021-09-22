@@ -48,18 +48,27 @@ const gameBoard = ((doc) => {
     }
     return { storeRows };
 })(document);
-const tableD = document.querySelectorAll("td");
-//console.log(tabled);
-tableD.forEach((td) => {
-    td.addEventListener('click', () => {
-        gameBoard.storeRows('x', td.id);
-    })
-})
 const player = (() => {
     let name = "";
-    return;
+    let letter = "";
+    const setName = (input) => {
+        name = input;
+    }
+    const getName = () => name;
+    const setLetter = (input) => {
+        letter = input;
+    }
+    const getLetter = () => letter;
+    return { setName, getName, setLetter, getLetter };
 })();
 
 const game = (() => {
     return;
+})
+
+const tableD = document.querySelectorAll("td");
+tableD.forEach((td) => {
+    td.addEventListener('click', () => {
+        gameBoard.storeRows('x', td.id);
+    })
 })
