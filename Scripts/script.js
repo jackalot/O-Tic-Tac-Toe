@@ -97,7 +97,7 @@ const game = (() => {
         1: checks 1-4-7
         2: checks 2-5-8, 2-4-6
        */
-      if(rows[0] === "x" || "o")
+      if(rows[0] === "x" || rows[0] === "o")
       {
         const zero12 = checkIfWon(0, 1, 2);
         if(zero12 === "o Wins!" || zero12 == "x Wins!" || zero12 === "Tied!")
@@ -121,20 +121,20 @@ const game = (() => {
             }
         }
       }
-      else if(rows[1])
+      else if(rows[1]  === "x" || rows[0] === "o")
       {
         const one47 = checkIfWon(1, 4, 7);
         if(one47 === "o Wins!" || one47 == "x Wins!" || one47 === "Tied!")
         {
-            console.log(one47)
+            console.log(one47);
         }
       }
-      else if(rows[2])
+      else if(rows[2] === "x" || rows[0] === "o")
       {
         const two58 = checkIfWon(2, 5, 8);
         if(two58 === "o Wins!" || two58 == "x Wins!" || two58 === "Tied!")
         {
-            console.log(two58)
+            console.log(two58);
         }
         else
         {
@@ -143,6 +143,14 @@ const game = (() => {
             {
                 console.log(two46);
             }
+        }
+      }
+      else if(rows[3] === "x" || rows[0] === "o")
+      {
+        const three45 = checkIfWon(3, 4, 5);
+        if(three45 === "o Wins!" || three45 == "x Wins!" || three45 === "Tied!")
+        {
+            console.log(three45)
         }
       }
       
