@@ -116,6 +116,7 @@ const game = ((doc) => {
             P2Div.classList.remove("my-Turn");
         }
     }
+    const getCurrentPlayer = () => playerChoice;
    const testWin = () => {
     /*
     D = done and nothing will go to it
@@ -243,7 +244,7 @@ const game = ((doc) => {
         }
         
    }
-    return { testWin, getPlayers, pickPlayer };
+    return { testWin, getPlayers, pickPlayer, getCurrentPlayer };
 })(document);
 console.log(player);
 const player1Prompt = window.prompt("Player 1 choose your name, you'll be X");
@@ -257,6 +258,14 @@ game.getPlayers(player1, player2);
 const tableD = document.querySelectorAll("td");
 tableD.forEach((td) => {
     td.addEventListener('click', () => {
+        let currentPlayer = game.getCurrentPlayer();
+        if(currentPlayer === 0)
+        {
         gameBoard.storeRows('x', td.id);
+        }
+        else if(currentPlayer === 1)
+        {
+            gameBoard.storeRows('o', td.id);
+        }
     })
 })
