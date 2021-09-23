@@ -74,13 +74,23 @@ const player = (() => {
     }
     const getLetter = () => letter;
     return { setName, getName, setLetter, getLetter };
-})();
+});
 
 const game = (() => {
     /*
     manage the game here with code like making the players swap
     */
-
+   let allPlayers = [];
+    const getPlayers = (one, two) => {
+        if(allPlayers.length === 0)
+        {
+            allPlayers.push(one);
+            allPlayers.push(two);
+            console.log(allPlayers);
+            console.log(allPlayers[0].getName());
+            console.log(allPlayers[1].getName());
+        }
+    }
    const testWin = () => {
     /*
     D = done and nothing will go to it
@@ -189,15 +199,16 @@ const game = (() => {
         }
         
    }
-    return { checkIfWon, testWin };
+    return { testWin, getPlayers };
 })();
+console.log(player);
 const player1Prompt = window.prompt("Player 1 choose your name, you'll be X");
 const player2Prompt = window.prompt("Player 2 choose your name, you'll be O");
 const player1 = player();
-player1.setName("John");
+player1.setName(player1Prompt);
 const player2 = player();
-player2.setName("hammond");
-console.log(player1.getName());
+player2.setName(player2Prompt);
+game.getPlayers(player1, player2);
 //get the table and make it clickable
 const tableD = document.querySelectorAll("td");
 tableD.forEach((td) => {
