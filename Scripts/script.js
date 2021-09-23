@@ -1,7 +1,7 @@
 const gameBoard = ((doc) => {
-    let rows = ['X', 'O', 'O',
-                'O', 'X', 'O',
-                'O', 'O', 'X'];
+    let rows = ['x', 'x', 'o',
+                'o', 'o', 'x',
+                'x', 'x', 'o'];
 
     const storeRows = (input, id) => {
         if(input === 'o' || input === 'x')
@@ -54,10 +54,10 @@ const gameBoard = ((doc) => {
         {
             if(rows[i] === "-")
             {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
     return { storeRows, getRows, isBoardFull };
 })(document);
