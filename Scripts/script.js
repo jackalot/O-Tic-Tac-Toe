@@ -1,7 +1,7 @@
 const gameBoard = ((doc) => {
-    let rows = ['x', 'o', 'o',
-                'o', 'x', 'o',
-                'o', 'o', 'x'];
+    let rows = ['-', '-', '-',
+                '-', '-', '-',
+                '-', '-', '-'];
 
     const storeRows = (input, id) => {
         if(input === 'o' || input === 'x')
