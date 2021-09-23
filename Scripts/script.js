@@ -83,13 +83,20 @@ const game = (() => {
 
    const testWin = () => {
     /*
-    rows = [0, 1, 2,
+    D = done and nothing will go to it
+    rows = [0D, 1D, 2D,
             3, 4, 5,
             6, 7, 8]; test any of these
     */
        
        const rows = gameBoard.getRows();
-       
+       //Since this is hard to read code and to reduce scrolling:
+       /*
+       What each if chain checks for:
+       0: checks 0-1-2, 0-4-8
+        1: checks 1-4-7
+        2: checks 2-5-8, 2-4-6
+       */
       if(rows[0] === "x" || "o")
       {
         const zero12 = checkIfWon(0, 1, 2);
@@ -104,6 +111,14 @@ const game = (() => {
             {
                 console.log(zero48);
             }
+            else
+            {
+                const zero36 = checkIfWon(0, 3, 6);
+                if(zero36 === "o Wins!" || zero36 == "x Wins!" || zero36 === "Tied!")
+                {
+                    console.log(zero36);
+                }
+            }
         }
       }
       else if(rows[1])
@@ -114,6 +129,23 @@ const game = (() => {
             console.log(one47)
         }
       }
+      else if(rows[2])
+      {
+        const two58 = checkIfWon(2, 5, 8);
+        if(two58 === "o Wins!" || two58 == "x Wins!" || two58 === "Tied!")
+        {
+            console.log(two58)
+        }
+        else
+        {
+            const two46 = checkIfWon(2, 4, 6);
+            if(two46 === "o Wins!" || two46 == "x Wins!" || two46 === "Tied!")
+            {
+                console.log(two46);
+            }
+        }
+      }
+      
         
    }
    //check these three indexes that the player has won
