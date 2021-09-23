@@ -1,7 +1,7 @@
 const gameBoard = ((doc) => {
-    let rows = ['-', '-', '-',
-                '-', '-', '-',
-                '-', '-', '-'];
+    let rows = ['x', 'o', 'o',
+                'o', 'x', 'o',
+                'o', 'o', 'x'];
 
     const storeRows = (input, id) => {
         if(input === 'o' || input === 'x')
@@ -80,12 +80,12 @@ const game = (() => {
     manage the game here with code like making the players swap
     */
    //check these three indexes that the player has won
-   const checkIfWon = ([first, second, third]) => {
+   const checkIfWon = (first, second, third) => {
        const rows = gameBoard.getRows();
        const full = gameBoard.isBoardFull();
         if(rows[first] === 'x' && rows[second] === 'x' &&  rows[third] === 'x')
         {
-            console.log("x wins")
+            console.log("x wins");
         }
         else if(rows[first] === 'o' && rows[second] === 'o' &&  rows[third] === 'o')
         {
@@ -98,8 +98,8 @@ const game = (() => {
         
    }
     return { checkIfWon };
-})
-
+})();
+game.checkIfWon([0, 4, 8]);
 const tableD = document.querySelectorAll("td");
 tableD.forEach((td) => {
     td.addEventListener('click', () => {
