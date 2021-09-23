@@ -1,7 +1,7 @@
 const gameBoard = ((doc) => {
-    let rows = ['-', '-', '-',
-                '-', '-', '-',
-                '-', '-', '-'];
+    let rows = ['X', 'O', 'O',
+                'O', 'X', 'O',
+                'O', 'O', 'X'];
 
     const storeRows = (input, id) => {
         if(input === 'o' || input === 'x')
@@ -82,24 +82,24 @@ const game = (() => {
    //check these three indexes that the player has won
    const checkIfWon = (first, second, third) => {
        const rows = gameBoard.getRows();
-       const full = gameBoard.isBoardFull();
+       const full = gameBoard.isBoardFull()
         if(rows[first] === 'x' && rows[second] === 'x' &&  rows[third] === 'x')
         {
-            console.log("x wins");
+          return  console.log("x wins");
         }
         else if(rows[first] === 'o' && rows[second] === 'o' &&  rows[third] === 'o')
         {
-            console.log("O wins");
+            return console.log("O wins");
         }
         else if(full === true)
         {
-            console.log("its a tie!");
+           return console.log("its a tie!");
         }
         
    }
     return { checkIfWon };
 })();
-game.checkIfWon([0, 4, 8]); //testing
+game.checkIfWon(0, 4, 8); //testing
 //get the table and make it clickable
 const tableD = document.querySelectorAll("td");
 tableD.forEach((td) => {
