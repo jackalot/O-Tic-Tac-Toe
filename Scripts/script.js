@@ -45,11 +45,21 @@ const gameBoard = ((doc) => {
                     break;
             }
         }
-        const getRows = () => {
-            return rows;
-        }
     }
-    return { storeRows, getRows };
+    const getRows = () => {
+        return rows;
+    }
+    const isBoardFull = () => {
+        for(i = 0; i < rows.length; i++)
+        {
+            if(rows[i] === "-")
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    return { storeRows, getRows, isBoardFull };
 })(document);
 const player = (() => {
     let name = "";
@@ -71,14 +81,23 @@ const game = (() => {
     */
    //check these three indexes that the player has won
    const checkIfWon = ([first, second, third]) => {
-       let rows = gameBoard.getRows();
+       const rows = gameBoard.getRows();
+       const full = gameBoard.isBoardFull();
         if(rows[first] === 'x' && rows[second] === 'x' &&  rows[third] === 'x')
         {
             console.log("x wins")
         }
+        else if(rows[first] === 'o' && rows[second] === 'o' &&  rows[third] === 'o')
+        {
+            console.log("O wins");
+        }
+        else if(full === true)
+        {
+            console.log("its a tie!");
+        }
         
    }
-    return;
+    return { checkIfWon };
 })
 
 const tableD = document.querySelectorAll("td");
