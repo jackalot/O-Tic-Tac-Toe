@@ -87,16 +87,34 @@ const game = (() => {
             3, 4, 5,
             6, 7, 8]; test any of these
     */
-           const zero12 = checkIfWon(0, 1, 2);
+       
+       const rows = gameBoard.getRows();
+       
+      if(rows[0] === "x" || "o")
+      {
+        const zero12 = checkIfWon(0, 1, 2);
         if(zero12 === "o Wins!" || zero12 == "x Wins!" || zero12 === "Tied!")
         {
-            console.log(checkIfWon(0, 1, 2));
+            console.log(zero12);
         }
         else
         {
-            const zero48 = checkIfWon(0, 1, 2);
-
+            const zero48 = checkIfWon(0, 4, 8);
+            if(zero48 === "o Wins!" || zero48 == "x Wins!" || zero48 === "Tied!")
+            {
+                console.log(zero48);
+            }
         }
+      }
+      else if(rows[1])
+      {
+        const one47 = checkIfWon(1, 4, 7);
+        if(one47 === "o Wins!" || one47 == "x Wins!" || one47 === "Tied!")
+        {
+            console.log(one47)
+        }
+      }
+        
    }
    //check these three indexes that the player has won
    const checkIfWon = (first, second, third) => {
