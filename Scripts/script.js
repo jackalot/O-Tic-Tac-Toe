@@ -89,6 +89,7 @@ const game = ((doc) => {
             const P1Div = doc.querySelector(".Player1 .paste1");
             const P1Text = doc.querySelector(".Player1 .paste1 .name");
             P1Text.textContent = allPlayers[0].getName();
+            P1Div.classList.add("my-Turn");
             const P2Div = doc.querySelector(".Player2 .paste2");
             const P2Text = doc.querySelector(".Player2 .paste2 .name");
             P2Text.textContent = allPlayers[1].getName();
@@ -98,13 +99,21 @@ const game = ((doc) => {
     }
     let playerChoice = 0; // 0 or 1, 0 is player 1, 1 is player 2
     const pickPlayer = () => {
-        if(pickPlayer == 0)
+        if(playerChoice == 0)
         {
-            pickPlayer++; // = player 2;
+            playerChoice++; // = player 2;
+            const P1Div = doc.querySelector(".Player1 .paste1");
+            P1Div.classList.remove("my-Turn");
+            const P2Div = doc.querySelector(".Player2 .paste2");
+            P2Div.classList.add("my-Turn");
         }
-        else if(pickPlayer == 1)
+        else if(playerChoice == 1)
         {
-            pickPlayer--; // == player 1;
+            playerChoice--; // == player 1;
+            const P1Div = doc.querySelector(".Player1 .paste1");
+            P1Div.classList.add("my-Turn");
+            const P2Div = doc.querySelector(".Player2 .paste2");
+            P2Div.remove("my-Turn");
         }
     }
    const testWin = () => {
@@ -147,16 +156,24 @@ const game = ((doc) => {
                 {
                     console.log(zero36);
                 }
+                else if(zero36 === "Keep going!")
+                {
+                    pickPlayer();
+                }
             }
         }
       }
       else if(rows[1]  === "x" || rows[1] === "o")
       {
-        const one47 = checkIfWon(1, 4, 7);
-        if(one47 === "o Wins!" || one47 == "x Wins!" || one47 === "Tied!")
-        {
-            console.log(one47);
-        }
+            const one47 = checkIfWon(1, 4, 7);
+            if(one47 === "o Wins!" || one47 == "x Wins!" || one47 === "Tied!")
+            {
+                console.log(one47);
+            }
+            else if(one47 === "Keep going!")
+            {
+                pickPlayer();
+            }
       }
       else if(rows[2] === "x" || rows[2] === "o")
       {
@@ -172,15 +189,23 @@ const game = ((doc) => {
             {
                 console.log(two46);
             }
+            else if(two46 === "Keep going!")
+            {
+                pickPlayer();
+            }
         }
       }
       else if(rows[3] === "x" || rows[3] === "o")
       {
-        const three45 = checkIfWon(3, 4, 5);
-        if(three45 === "o Wins!" || three45 == "x Wins!" || three45 === "Tied!")
-        {
-            console.log(three45)
-        }
+            const three45 = checkIfWon(3, 4, 5);
+            if(three45 === "o Wins!" || three45 == "x Wins!" || three45 === "Tied!")
+            {
+                console.log(three45)
+            }
+            else if(three45 === "Keep going!")
+            {
+                pickPlayer();
+            }
       }
       else if(rows[6] === "x" || rows[6] === "o")
       {
@@ -189,9 +214,11 @@ const game = ((doc) => {
         {
             console.log(six78)
         }
+        else if(six78 === "Keep going!")
+        {
+            pickPlayer();
+        }
       }
-      
-        
    }
    //check these three indexes that the player has won
    const checkIfWon = (first, second, third) => {
@@ -211,6 +238,7 @@ const game = ((doc) => {
         }
         else
         {
+            console.log("keep going");
             return "Keep going!";
         }
         
