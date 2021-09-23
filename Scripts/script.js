@@ -96,6 +96,17 @@ const game = ((doc) => {
             P2Div.append(P2Text)
         }
     }
+    let playerChoice = 0; // 0 or 1, 0 is player 1, 1 is player 2
+    const pickPlayer = () => {
+        if(pickPlayer == 0)
+        {
+            pickPlayer++; // = player 2;
+        }
+        else if(pickPlayer == 1)
+        {
+            pickPlayer--; // == player 1;
+        }
+    }
    const testWin = () => {
     /*
     D = done and nothing will go to it
@@ -185,7 +196,7 @@ const game = ((doc) => {
    //check these three indexes that the player has won
    const checkIfWon = (first, second, third) => {
        const rows = gameBoard.getRows();
-       const full = gameBoard.isBoardFull()
+       const full = gameBoard.isBoardFull();
         if(rows[first] === 'x' && rows[second] === 'x' &&  rows[third] === 'x')
         {
           return  "x Wins!";
@@ -204,7 +215,7 @@ const game = ((doc) => {
         }
         
    }
-    return { testWin, getPlayers };
+    return { testWin, getPlayers, pickPlayer };
 })(document);
 console.log(player);
 const player1Prompt = window.prompt("Player 1 choose your name, you'll be X");
