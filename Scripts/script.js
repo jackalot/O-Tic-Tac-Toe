@@ -76,7 +76,7 @@ const player = (() => {
     return { setName, getName, setLetter, getLetter };
 });
 
-const game = (() => {
+const game = ((doc) => {
     /*
     manage the game here with code like making the players swap
     */
@@ -86,9 +86,14 @@ const game = (() => {
         {
             allPlayers.push(one);
             allPlayers.push(two);
-            console.log(allPlayers);
-            console.log(allPlayers[0].getName());
-            console.log(allPlayers[1].getName());
+            const P1Div = doc.querySelector(".Player1 .paste1");
+            const P1Text = doc.querySelector(".Player1 .paste1 .name");
+            P1Text.textContent = allPlayers[0].getName();
+            const P2Div = doc.querySelector(".Player2 .paste2");
+            const P2Text = doc.querySelector(".Player2 .paste2 .name");
+            P2Text.textContent = allPlayers[1].getName();
+            P1Div.append(P1Text);
+            P2Div.append(P2Text)
         }
     }
    const testWin = () => {
@@ -200,7 +205,7 @@ const game = (() => {
         
    }
     return { testWin, getPlayers };
-})();
+})(document);
 console.log(player);
 const player1Prompt = window.prompt("Player 1 choose your name, you'll be X");
 const player2Prompt = window.prompt("Player 2 choose your name, you'll be O");

@@ -26,13 +26,17 @@ header {
 }
 .Player1 .name {
     margin: 10px;
+    justify-content: flex-start;
 }
 .Player1 .score {
     margin: 10px;
+    justify-content: flex-end;
 }
 .Player2 .name {
     margin: 10px;
+    justify-content: flex-start;
 }
 .Player2 .score {
     margin: 10px;
+    justify-content: flex-start;
 }
