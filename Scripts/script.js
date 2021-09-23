@@ -14,7 +14,7 @@ const gameBoard = ((doc) => {
             if(rows[i] != 'o' && rows[i] != 'x')
             {
             rows[i] = input;
-               // console.log("final: " + rows[i]);
+                console.log("final: " + rows[i]);
             displayRows();
             }
         }
@@ -166,7 +166,7 @@ const game = ((doc) => {
             }
         }
       }
-      else if(rows[1]  === "x" || rows[1] === "o")
+      else if(rows[1] === "x" || rows[1] === "o")
       {
             const one47 = checkIfWon(1, 4, 7);
             if(one47 === "o Wins!" || one47 == "x Wins!" || one47 === "Tied!")
@@ -242,7 +242,7 @@ const game = ((doc) => {
             const P2ScoreElement = doc.querySelector(".Player2 .score");
             p2Score;
             P2ScoreElement.textContent = 'Score: ' + p2Score;
-            P2Div.append(P1ScoreElement)
+            P2Div.append(P2ScoreElement)
             return "o Wins!";
         }
         else if(full === true)
