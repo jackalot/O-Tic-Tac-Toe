@@ -191,7 +191,10 @@ const game = (() => {
    }
     return { checkIfWon, testWin };
 })();
-
+const player1Prompt = window.prompt("Player 1 choose your name, you'll be X");
+const player2Prompt = window.prompt("Player 2 choose your name, you'll be O");
+const player1 = player.setName(player1Prompt);
+const player2 = player.setName(player2Prompt);
 //get the table and make it clickable
 const tableD = document.querySelectorAll("td");
 tableD.forEach((td) => {
