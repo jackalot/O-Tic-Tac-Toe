@@ -113,7 +113,7 @@ const game = ((doc) => {
             const P1Div = doc.querySelector(".Player1 .paste1");
             P1Div.classList.add("my-Turn");
             const P2Div = doc.querySelector(".Player2 .paste2");
-            P2Div.remove("my-Turn");
+            P2Div.classList.remove("my-Turn");
         }
     }
    const testWin = () => {
