@@ -84,18 +84,21 @@ const game = (() => {
    const testWin = () => {
     /*
     D = done and nothing will go to it
+    A = already done because of other numbers
     rows = [0D, 1D, 2D,
-            3, 4, 5,
-            6, 7, 8]; test any of these
+            3D, 4A, 5A,
+            6D, 7A, 8A]; test any of these
     */
        
        const rows = gameBoard.getRows();
        //Since this is hard to read code and to reduce scrolling:
        /*
        What each if chain checks for:
-       0: checks 0-1-2, 0-4-8
+       0: checks 0-1-2, 0-4-8, 0-3-8
         1: checks 1-4-7
         2: checks 2-5-8, 2-4-6
+        3: checks 3-4-5
+        6: checks 6-7-8
        */
       if(rows[0] === "x" || rows[0] === "o")
       {
@@ -121,7 +124,7 @@ const game = (() => {
             }
         }
       }
-      else if(rows[1]  === "x" || rows[0] === "o")
+      else if(rows[1]  === "x" || rows[1] === "o")
       {
         const one47 = checkIfWon(1, 4, 7);
         if(one47 === "o Wins!" || one47 == "x Wins!" || one47 === "Tied!")
@@ -129,7 +132,7 @@ const game = (() => {
             console.log(one47);
         }
       }
-      else if(rows[2] === "x" || rows[0] === "o")
+      else if(rows[2] === "x" || rows[2] === "o")
       {
         const two58 = checkIfWon(2, 5, 8);
         if(two58 === "o Wins!" || two58 == "x Wins!" || two58 === "Tied!")
@@ -145,12 +148,20 @@ const game = (() => {
             }
         }
       }
-      else if(rows[3] === "x" || rows[0] === "o")
+      else if(rows[3] === "x" || rows[3] === "o")
       {
         const three45 = checkIfWon(3, 4, 5);
         if(three45 === "o Wins!" || three45 == "x Wins!" || three45 === "Tied!")
         {
             console.log(three45)
+        }
+      }
+      else if(rows[6] === "x" || rows[6] === "o")
+      {
+        const six78 = checkIfWon(6, 7, 8);
+        if(six78 === "o Wins!" || six78 == "x Wins!" || six78 === "Tied!")
+        {
+            console.log(six78)
         }
       }
       
