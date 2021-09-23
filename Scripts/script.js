@@ -1,7 +1,7 @@
 const gameBoard = ((doc) => {
-    let rows = ['x', 'x', 'o',
-                'o', 'o', 'x',
-                'x', 'x', 'o'];
+    let rows = ['-', '-', '-',
+                '-', '-', '-',
+                '-', '-', '-'];
 
     const storeRows = (input, id) => {
         if(input === 'o' || input === 'x')
@@ -45,6 +45,7 @@ const gameBoard = ((doc) => {
                     break;
             }
         }
+        game.testWin();
     }
     const getRows = () => {
         return rows;
@@ -79,25 +80,47 @@ const game = (() => {
     /*
     manage the game here with code like making the players swap
     */
+
+   const testWin = () => {
+    /*
+    rows = [0, 1, 2,
+            3, 4, 5,
+            6, 7, 8]; test any of these
+    */
+           const zero12 = checkIfWon(0, 1, 2);
+        if(zero12 === "o Wins!" || zero12 == "x Wins!" || zero12 === "Tied!")
+        {
+            console.log(checkIfWon(0, 1, 2));
+        }
+        else
+        {
+            const zero48 = checkIfWon(0, 1, 2);
+
+        }
+   }
    //check these three indexes that the player has won
    const checkIfWon = (first, second, third) => {
        const rows = gameBoard.getRows();
        const full = gameBoard.isBoardFull()
         if(rows[first] === 'x' && rows[second] === 'x' &&  rows[third] === 'x')
         {
-          return  console.log("x wins");
+          return  "x Wins!";
         }
         else if(rows[first] === 'o' && rows[second] === 'o' &&  rows[third] === 'o')
         {
-            return console.log("O wins");
+            return "o Wins!";
         }
         else if(full === true)
         {
-           return console.log("its a tie!");
+           return "Tied!";
+        }
+        else
+        {
+            return "Keep going!";
         }
         
    }
-    return { checkIfWon };
+    return { checkIfWon, testWin };
 })();
 
 //get the table and make it clickable
