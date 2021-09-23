@@ -8,3 +8,31 @@ td {
    height: fit-content;
    
 }
+header {
+    display: flex;
+    flex-direction: row;
+    background-color: lightblue;
+}
+.Player1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.Player2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+.Player1 .name {
+    margin: 10px;
+}
+.Player1 .score {
+    margin: 10px;
+}
+.Player2 .name {
+    margin: 10px;
+}
+.Player2 .score {
+    margin: 10px;
+}
