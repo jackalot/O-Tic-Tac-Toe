@@ -99,7 +99,7 @@ const game = (() => {
    }
     return { checkIfWon };
 })();
-game.checkIfWon(0, 4, 8); //testing
+
 //get the table and make it clickable
 const tableD = document.querySelectorAll("td");
 tableD.forEach((td) => {
