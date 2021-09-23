@@ -14,7 +14,7 @@ const gameBoard = ((doc) => {
             if(rows[i] != 'o' && rows[i] != 'x')
             {
             rows[i] = input;
-                console.log("final: " + rows[i]);
+               // console.log("final: " + rows[i]);
             displayRows();
             }
         }
@@ -81,6 +81,8 @@ const game = ((doc) => {
     manage the game here with code like making the players swap
     */
    let allPlayers = [];
+   let p1Score = 0;
+    let p2Score = 0;
     const getPlayers = (one, two) => {
         if(allPlayers.length === 0)
         {
@@ -227,10 +229,20 @@ const game = ((doc) => {
        const full = gameBoard.isBoardFull();
         if(rows[first] === 'x' && rows[second] === 'x' &&  rows[third] === 'x')
         {
+            const P1Div = doc.querySelector(".Player1");
+            const P1ScoreElement = doc.querySelector(".Player1 .score");
+            p1Score++;
+            P1ScoreElement.textContent = 'Score: ' + p1Score;
+            P1Div.append(P1ScoreElement)
           return  "x Wins!";
         }
         else if(rows[first] === 'o' && rows[second] === 'o' &&  rows[third] === 'o')
         {
+            const P2Div = doc.querySelector(".Player2");
+            const P2ScoreElement = doc.querySelector(".Player2 .score");
+            p2Score;
+            P2ScoreElement.textContent = 'Score: ' + p2Score;
+            P2Div.append(P1ScoreElement)
             return "o Wins!";
         }
         else if(full === true)
@@ -246,7 +258,6 @@ const game = ((doc) => {
    }
     return { testWin, getPlayers, pickPlayer, getCurrentPlayer };
 })(document);
-console.log(player);
 const player1Prompt = window.prompt("Player 1 choose your name, you'll be X");
 const player2Prompt = window.prompt("Player 2 choose your name, you'll be O");
 const player1 = player();
