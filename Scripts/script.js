@@ -45,8 +45,11 @@ const gameBoard = ((doc) => {
                     break;
             }
         }
+        const getRows = () => {
+            return rows;
+        }
     }
-    return { storeRows };
+    return { storeRows, getRows };
 })(document);
 const player = (() => {
     let name = "";
@@ -63,6 +66,18 @@ const player = (() => {
 })();
 
 const game = (() => {
+    /*
+    manage the game here with code like making the players swap
+    */
+   //check these three indexes that the player has won
+   const checkIfWon = ([first, second, third]) => {
+       let rows = gameBoard.getRows();
+        if(rows[first] === 'x' && rows[second] === 'x' &&  rows[third] === 'x')
+        {
+            console.log("x wins")
+        }
+        
+   }
     return;
 })
 
