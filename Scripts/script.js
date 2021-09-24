@@ -18,6 +18,13 @@ const gameBoard = ((doc) => {
             displayRows();
             }
         }
+        else if(input === "-")
+        {
+            //id is just a number in this case so no slicing needed
+            rows[id] === input;
+            console.log(input);
+            displayRows();
+        }
         else
         {
             return console.error('cant store something thats not x or o');
@@ -279,4 +286,12 @@ tableD.forEach((td) => {
             gameBoard.storeRows('o', td.id);
         }
     })
+})
+const resetBtn = document.querySelector("button");
+resetBtn.addEventListener('click', () => {
+    rows = gameBoard.getRows();
+    for(i = 0; i < rows.length; i++)
+    {
+        gameBoard.storeRows("-", i);
+    }
 })
