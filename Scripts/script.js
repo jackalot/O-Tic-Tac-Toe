@@ -18,13 +18,6 @@ const gameBoard = ((doc) => {
             displayRows();
             }
         }
-        else if(input === "-")
-        {
-            //id is just a number in this case so no slicing needed
-            rows[id] === input;
-            console.log(input);
-            displayRows();
-        }
         else
         {
             return console.error('cant store something thats not x or o');
@@ -67,7 +60,7 @@ const gameBoard = ((doc) => {
         }
         return true;
     }
-    return { storeRows, getRows, isBoardFull };
+    return { storeRows, displayRows, getRows, isBoardFull };
 })(document);
 const player = (() => {
     let name = "";
@@ -292,6 +285,7 @@ resetBtn.addEventListener('click', () => {
     rows = gameBoard.getRows();
     for(i = 0; i < rows.length; i++)
     {
-        gameBoard.storeRows("-", i);
+        rows[i] = "-";
     }
+    gameBoard.displayRows();
 })
